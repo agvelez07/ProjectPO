@@ -21,9 +21,9 @@
     
     <div style="display: inline-flex; margin-top: 20px">
         <h1>Users</h1>
-        <a class="studentButtons" onclick="location.href='{{ url('Users/Create ') }}'" >
+        <a class="studentButtons" onclick="location.href='{{ url('Suppliers/Create ') }}'" >
             <span class="plus"> +</span>
-            <span class="text">Adicionar Utilizador</span>
+            <span class="text">Adicionar Fornecedor</span>
         </a>
     </div>
     @if($data->count() <= 0)
@@ -56,7 +56,7 @@
                             <td>
                         @endif
 
-                        <td><a href="{{ url('Users/Edit/' . $user->ID) }}" class="btn btn-primary">Edit</a>
+                        <td><a href="{{ url('Suppliers/Edit/' . $user->ID) }}" class="btn btn-primary">Edit</a>
                         <td><a href="{{ url('Delete/' . $user->ID) }}" class="btn btn-danger"
                                 onclick="return confirm('Deseja eliminar o utilizador {{ $user->email }}')">Delete</a>
                         </td>
@@ -65,8 +65,10 @@
             </tbody>
         </table>
     </div>
-    <a href="{{ url('/')}}" class="btn btn-primary">Return</a>
+    
     @endif
+    <a href="{{ url('/')}}" class="btn btn-primary">Return</a>
+
 </body>
 
 </html>

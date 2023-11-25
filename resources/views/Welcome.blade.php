@@ -31,10 +31,13 @@
         <div class="options-container">
             <ul class="app-options-buttons">
                 <li>
-                    <a href="{{ url('Users') }}" class="app-option-button">
-                        Gerir Utilizadores
+                    <a href="{{url('Suppliers')}}" class="app-option-button">
+                        Gerir Fornecedores
                     </a>
                     <li>
+                    <a href="{{url('Users')}}" id="second-btn" class="app-option-button">
+                        Gerir Utilizadores
+                    </a>
                     <a href="" id="second-btn" class="app-option-button">
                         Adicionar PO
                     </a>

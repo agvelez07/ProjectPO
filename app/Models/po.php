@@ -18,9 +18,14 @@ class supplier extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'id',
         'name',
-        'status'
+        'num',
+        'dateInit'.
+        'dateEnd'.
+     	'totalCost',
+     	'supplierID', 
+        'costType',
+    	'status',
     ];
     public $timestamps = false;
 }

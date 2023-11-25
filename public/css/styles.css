@@ -75,20 +75,20 @@ a {
 
 
 .options-container {
-    width: 100%;
-    bottom: 200px;
-    padding: 400px 0 0 42vw;
+    width: 70vw;
+    margin: auto;
+    padding: 300px 0 0 40vw;
 
 }
 
 .app-options-buttons {
-    width: 300px;
-    height: 200px;
-    background-color: #ffffff;
+    width: 400px;
+    height: 270px;
+    background-color: #ffffffa4;
     text-align: center;
     padding: 48px 20px 20px 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.579);
     list-style: none;
 }
 
@@ -119,10 +119,53 @@ a {
 }
 
 #second-btn {
-    margin: 2em 0 0 1em;
+    margin: 2em 0 0 0.3em;
 }
 
+.studentButtons {
+    width: auto;
+    height: 33px;
+    max-width: 1em; 
+    transition: max-width 0.5s;
+    background: #fff;
+    border: 2.4px solid #f04b36;
+    color: black;
+    text-decoration: none;
+    font-size: 1.8em !important;
+    margin-left: 0.6em !important;
+    margin-top: 9px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-flex;
+    align-items: center;
+    overflow: hidden;
+}
 
+    .studentButtons:hover {
+        max-width: 3000px; 
+        cursor: pointer;
+        color: #f04b36;
+    }
+
+.text {
+    color: #f04b36;
+    white-space: nowrap;
+    text-decoration: none;
+    border: none;
+    padding-right: 15px;
+}
+
+.plus {
+    font-family: 'Sans Serif Collection';
+    font-weight: 500;
+    font-size: xx-large;
+    margin-left: -6px;
+    margin-top: -3px;
+    color: #f04b36;
+    padding: 0px 8px;
+    display: flex;
+    align-items: center;
+}
 
 @media only screen and (max-width: 767px) {
     .menu-container {
