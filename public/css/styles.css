@@ -1,0 +1,180 @@
+body {
+    overflow-x: hidden;
+    font-family: Sans-Serif;
+    margin: 0;
+    overflow-y: hidden;
+}
+
+.menu {
+    background-color: black;
+    text-decoration: none;
+}
+
+.menu-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    background: #232323;
+    color: #cdcdcd;
+    padding: 20px;
+    z-index: 1;
+    -webkit-user-select: none;
+    user-select: none;
+    box-sizing: border-box;
+}
+
+.logo {
+    display: block;
+    width: 8em !important;
+    margin: 11px 0 0 20px;
+}
+
+a {
+    text-decoration: none;
+}
+
+#login-button,
+#register-button {
+    color: white;
+}
+
+#login-button:hover,
+#register-button:hover {
+    color: #f04b36;
+}
+
+
+.menu-container input {
+    display: block;
+    width: 35px;
+    height: 25px;
+    margin: 0;
+    position: absolute;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 2;
+    -webkit-touch-callout: none;
+}
+
+.authentication-buttons {
+    margin-left: 120px;
+}
+
+.menu li {
+    padding: 10px 0;
+    font-size: 22px;
+}
+
+.welcome-main {
+    background-color: #232323;
+    background-image: url('/imgs/sky_whitebridge_16x9.jpg');
+    background-size: cover;
+    height: 95vh;
+}
+
+
+.options-container {
+    width: 100%;
+    bottom: 200px;
+    padding: 400px 0 0 42vw;
+
+}
+
+.app-options-buttons {
+    width: 300px;
+    height: 200px;
+    background-color: #ffffff;
+    text-align: center;
+    padding: 48px 20px 20px 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    list-style: none;
+}
+
+.app-option-button {
+    padding-left: 3px;
+    box-shadow: 0px 1px 25px 0px #b0b0b0;
+    background-color: #ffffff;
+    border-radius: 28px;
+    border: 1px solid #f04b36;
+    display: inline-block;
+    cursor: pointer;
+    color: #f04b36;
+    font-family: 'Verdana', 'Roboto', sans-serif;
+    font-size: 17px;
+    padding: 18px 57px;
+    text-decoration: none;
+    text-shadow: 50px 1px 50px #ffffff;
+}
+
+.app-option-button:hover {
+    background-color: #fa6655;
+    color: white !important;
+}
+
+.app-option-button:active {
+    position: relative;
+    top: 1px;
+}
+
+#second-btn {
+    margin: 2em 0 0 1em;
+}
+
+
+
+@media only screen and (max-width: 767px) {
+    .menu-container {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .menu {
+        position: absolute;
+        box-sizing: border-box;
+        width: 300px;
+        right: -300px;
+        top: 0;
+        margin: -20px;
+        padding: 75px 50px 50px;
+        background: #cdcdcd;
+        transform-origin: 0% 0%;
+        transform: translateX(0%);
+        transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+    }
+
+    .menu-container input:checked~.menu {
+        transform: translateX(-100%);
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .menu-container {
+        width: 100%;
+    }
+
+    .menu-container a {
+        color: #cdcdcd;
+    }
+
+    .menu-container input {
+        display: none;
+    }
+
+    .menu {
+        position: relative;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .menu ul {
+        display: flex;
+        padding: 0;
+    }
+
+    .menu li {
+        padding: 0 20px;
+    }
+}
