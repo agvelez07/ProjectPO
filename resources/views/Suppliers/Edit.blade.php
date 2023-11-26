@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Users</title>
+    <title>Editar Fornecedor</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
@@ -13,44 +13,36 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h2>Editar Utilizador</h2>
+                <h2>Editar Fornecedor</h2>
                 @if(Session::has('success'))
                 <div class="alert alert-success" role="alert">
                     {{Session::get('success')}}
                 </div>
                 @endif
-                <form method="post" action="{{ url('Update-User') }}">
+                <form method="post" action="{{ url('Update-Supplier')}}">
                     @csrf
-                    <input type="hidden" name="ID" value="{{ $data->ID }}">
+                    <input type="hidden" name="id" value="{{ $data->id}}">
+                    <h5>Id: {{$data->id}}</h5>
                     <div class="md-3">
-                        <label class="form-label">Email</label>
-                        <input type="email" class="form-control" name="email" placeholder="Enter Email" value="{{ old('email', $data->email) }}">
-                        @error('email')
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-control" name="name" placeholder="Enter Name" value="{{ old('name', $data->name) }}">
+                        @error('name')
                             <div class="alert alert-danger" role="alert">
-                                {{ $message }}
+                                {{$message}}
                             </div>
                         @enderror
                     </div>
                     <div class="md-3">
-                        <label class="form-label">Password</label>
-                        <input type="password" class="form-control" name="password" placeholder="Enter Password">
-                        @error('password')
-                            <div class="alert alert-danger" role="alert">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
-                    <div class="md-3">
-                        <h3>Função</h3>
-                        <select name="role" class="form-control">
-                            <option value="0" @if($data->role == 0) selected @endif>Finance</option>
-                            <option value="1" @if($data->role == 1) selected @endif>First Approver</option>
-                            <option value="2" @if($data->role == 2) selected @endif>Final Approver</option>
-                            <option value="3" @if($data->role == 3) selected @endif>Administrador</option>
+                        <h3>Estado</h3>
+                        <select name="status">
+                            <option value="0" @if($data->status == 0) selected @endif>Não sei</option>
+                            <option value="1" @if($data->status == 1) selected @endif>Something</option>
+                            <option value="2" @if($data->status == 2) selected @endif>Lorem ipsum </option>
+                            <option value="3" @if($data->status == 3) selected @endif>3</option>
                         </select>
                     </div>
                     <button type="submit" class="btn btn-primary">Submeter</button>
-                    <a href="{{ url('/Users') }}" class="btn btn-danger">Retroceder</a>         
+                    <a href="../" class="btn btn-danger">Retroceder</a>         
                 </form>
                 
             </div>

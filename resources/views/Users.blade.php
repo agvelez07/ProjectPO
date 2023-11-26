@@ -27,7 +27,7 @@
         </a>
     </div>
     @if($data->count() <= 0)
-        <h1>Sem Fornecedores</h1>
+        <h1>Sem Utilizador</h1>
     
     @else
     <div>

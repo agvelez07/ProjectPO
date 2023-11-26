@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-    <title>Users</title>
+    <title>Fornecedores</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -20,7 +20,7 @@
     @endif
     
     <div style="display: inline-flex; margin-top: 20px">
-        <h1>Users</h1>
+        <h1>Fornecedor</h1>
         <a class="studentButtons" onclick="location.href='{{ url('Suppliers/Create ') }}'" >
             <span class="plus"> +</span>
             <span class="text">Adicionar Fornecedor</span>
@@ -38,27 +38,27 @@
                 <th>Role</th>
             </thead>
             <tbody>
-                @foreach ($data as $user)
+                @foreach ($data as $supplier)
                     <tr>
-                        <td>{{ $user->ID }}</td>
-                        <td>{{ $user->email }}</td>
-                        @if ($user->role == 0)
-                            <td> Finance
+                        <td>{{ $supplier->id }}</td>
+                        <td>{{ $supplier->name}}</td>
+                        @if ($supplier->status == 0)
+                            <td> Não sei
                             <td>
-                        @elseif($user->role == 1)
-                            <td> First Approver
+                        @elseif($supplier->status == 1)
+                            <td> Something
                             <td>
-                        @elseif($user->role == 2)
-                            <td> Final Approver
+                        @elseif($supplier->status == 2)
+                            <td> Lorem Ipsum
                             <td>
-                        @elseif($user->role == 3)
-                            <td> Administrador
+                        @elseif($supplier->rstatusole == 3)
+                            <td> 3
                             <td>
                         @endif
 
-                        <td><a href="{{ url('Suppliers/Edit/' . $user->ID) }}" class="btn btn-primary">Edit</a>
-                        <td><a href="{{ url('Delete/' . $user->ID) }}" class="btn btn-danger"
-                                onclick="return confirm('Deseja eliminar o utilizador {{ $user->email }}')">Delete</a>
+                        <td><a href="{{ url('Suppliers/Edit/' . $supplier->id) }}" class="btn btn-primary">Edit</a>
+                        <td><a href="{{ url('Delete/' . $supplier->id) }}" class="btn btn-danger"
+                                onclick="return confirm('Deseja eliminar o fornecedor {{ $supplier->name }}')">Delete</a>
                         </td>
                     </tr>
                 @endforeach

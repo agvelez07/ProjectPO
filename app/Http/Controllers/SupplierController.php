@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\Supplier;
-use App\Models\supplier as ModelsSupplier;
 
 class SupplierController extends Controller
 {
@@ -17,69 +16,69 @@ class SupplierController extends Controller
         return view('Suppliers', compact('data')); //Retorna os dados para a view 'Users'.
     }
 
-
-    //Criar Utilizador-----------------------------------------------------------------
+    //Criar Fornecedore-----------------------------------------------------------------
     public function Create()
     {
         return view("Suppliers/Create");
     }
 
     //Post request ao criar um novo utilizador
-    public function saveUsers(Request $request)
+    public function saveSupplier(Request $request)
     {
-        //Validação
+        // Validação
         $request->validate([
-            'id' => 'required|id|unique:supplier,id',
+            'id' => 'unique:supplier,id',
             'name' => 'required|min:6',
         ]);
 
-
-        //Valores do request passados para as respectivas variáveis
+        // Valores do request passados para as respectivas variáveis
         $id = $request->id;
         $name = $request->name;
         $status = $request->status;
 
-        //Criação de novo utilizador
+        //dd($request->all());
+        // Criação do novo fornecedor com os dados das variáveis anteriores 
         $supplier = new Supplier();
         $supplier->id = $id;
         $supplier->name = $name;
         $supplier->status = $status;
 
-        //Guardar Utilizador na Base de dados
+        // Guardar Fornecedore na Base de dados
         $supplier->save();
 
-        //Se a ação for realizada com sucesso, retorna a view com mensagem de sucesso
+        // Debug
+
+        // Se a ação for realizada com sucesso, retorna a view com mensagem de sucesso
         return redirect()->back()->with('success', 'Fornecedor Adicionado com Sucesso');
     }
 
 
+
     //Editar--------------------------------------------------------------------------------
-    //GET - Retorna o valor do ID selecionado para a view
-    public function Edit($ID)
+    //GET - Retorna o valor do id selecionado para a view
+    public function Edit($id)
     {
-    $data = Supplier::where('ID', '=', $ID)->first();
-    return view('Suppliers/Edit', compact('data'));
+        $data = Supplier::where('id', '=', $id)->first();
+        return view('Suppliers/Edit', compact('data'));
     }
 
 
-    //Post - Edita as informações do Utilizador
-    public function updateUser(Request $request)
+    //Post - Edita as informações do Fornecedore
+    public function updateSupplier(Request $request)
     {
 
         //Validação 
         $request->validate([
-            'id' => 'required|id|unique:supplier,id',
-            'name' => 'required|min:6',
+            'name' => 'required|min:3',
         ]);
-
-
+    
         //Valores do request passados para as respectivas variáveis
         $id = $request->id;
         $name = $request->name;
         $status = $request->status;
 
         //Atualiza os dados
-        User::Where('ID', '=', $ID)->update([
+        Supplier::Where('id', '=', $id)->update([
             'id' => $id,
             'name' => $name,
             'status' => $status
@@ -89,13 +88,13 @@ class SupplierController extends Controller
         return redirect()->back()->with('success', 'Fornecedor Atualizado com Sucesso');
     }
 
-    //Post - Eliminar Utilizador
-    public function DeleteUser($ID)
+    //Post - Eliminar Fornecedore
+    public function DeleteSupplier($id)
     {
-        //Elimina o Utilizador selecionado
-        $ID = Supplier::Where('ID', '=', $ID)->Delete();
+        //Elimina o Fornecedore selecionado
+        $id = Supplier::Where('id', '=', $id)->Delete();
 
         //Se a ação for realizada com sucesso, retorna a view com mensagem de sucesso
-        return redirect()->back()->with('success', 'Utilizador Eliminado com Sucesso');
+        return redirect()->back()->with('success', 'Fornecedore Eliminado com Sucesso');
     }
 }

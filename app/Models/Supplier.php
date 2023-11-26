@@ -20,4 +20,9 @@ class supplier extends Model
         'name',
         'status',
     ];
+
+    public $timestamps = false;
+
+    public $updated_at = false;
+    public $created_at = false;
 }
