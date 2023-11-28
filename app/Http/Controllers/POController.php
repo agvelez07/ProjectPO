@@ -2,70 +2,130 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\supplier;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Exception;
+use App\Models\Po;
 
-class SupplierController extends Controller
+class POController extends Controller
 {
     public function Index()
     {
-        $data = supplier::get();
-        return view('Users', compact('data'));
+        $data = po::get();
+        return view('PO', compact('data'));
     }
     public function Create()
     {
-        return view("Create");
+        return view("POs/Create");
     }
-    public function saveSpplier(Request $request)
+    public function savePO(Request $request)
     {
-        $request ->validate([
-            'id' => 'required|id|unique:users,email',
-            'name' =>  'required|name|unique:supplier,name',
+        //dd($request->all());//Reached
+
+        $request->validate([
+            'num' => 'required|unique:po',
+            'dateInit' => 'required|date|after_or_equal:today',
+            'dateEnd' => 'required|date|after_or_equal:dateEnd',
+            'totalCost' => 'required',
+            'supplierID' => 'required',
+            'costType' => 'required',
+            'status' => 'required',
         ]);
-    
-        $id = $request->id;
-        $name = $request->name;
-
-        $supplier = new supplier();
-        $supplier->id = $id;
-        $supplier->name = $name;
-        $supplier->status = 1;
-        $supplier->save();
-
-        dd($request->all());
-
-        return redirect()->back()->with('success', 'Fornecedor Adicionado com Sucesso');
-    }
-
-    public function Edit($ID){
-        $data = supplier::Where('ID', '=', $ID)->First();
-        return View('Edit', compact('data'));
-    }
-
-    public function updateUser(Request $request){
-        $request ->validate([
-            'id' => 'required|id|unique:users,email',
-            'name' =>  'required|name|unique:supplier,name',
-        ]);
-    
-        $id = $request->id;
-        $name = $request->name;
-
-
-        supplier::Where('id', '=', $id)->update([
-            'id'=> $id,
-            'name'=> $name
-        ]);
-
-
-        return redirect()->back()->with('success', 'Utilizador Atualizado com Sucesso');
-    }
-
-    public function DeleteUser($ID)
-    {
-        $ID =supplier::Where('ID', '=', $ID)->Delete();
-        return redirect()->back()->with('success', 'Utilizador Eliminado com Sucesso');
         
+
+        //dd($request->all()); //Reached
+
+
+        $num = $request->num;
+        $dateInit = $request->dateInit;
+        $dateEnd = $request->dateEnd;
+        $totalCost = $request->totalCost;
+        $supplierID = $request->supplierID;
+        $costType  = $request->costType;
+        $status = $request->status;
+
+        
+
+        $po = new po();
+        $po->num = $num;
+        $po->dateInit = $dateInit;
+        $po->dateEnd = $dateEnd;
+        $po->totalCost = $totalCost;
+        $po->supplierID = $supplierID;
+        $po->costType = $costType;
+        $po->status = $status;
+
+        $po->save();
+
+        //dd($request->all());
+
+
+        return redirect()->back()->with('success', 'Ordem de Compra Criada com Sucesso!');
+    }
+
+    public function Edit($id)
+    {
+        $data = po::Where('id', '=', $id)->First();
+        return View('POs/Edit', compact('data'));
+    }
+
+    public function updatePO(Request $request)
+    {
+        //dd($request->all()); Reached
+
+
+        $request->validate([
+            'num' => 'required|unique:po',
+            'dateInit' => 'required|date|after_or_equal:today',
+            'dateEnd' => 'required|date|after_or_equal:dateEnd',
+            'totalCost' => 'required',
+            'supplierID' => 'required',
+            'costType' => 'required',
+            'status' => 'required',
+        ]);
+        
+        //dd($request->all()); Reached
+
+
+        $id = $request->id;
+        $num = $request->num;
+        $dateInit = $request->dateInit;
+        $dateEnd = $request->dateEnd;
+        $totalCost = $request->totalCost;
+        $supplierID = $request->supplierID;
+        $costType  = $request->costType;
+        $status = $request->status;
+
+        //dd($request->all()); Reached
+
+
+        Po::Where('id', '=', $id)->update([
+            'num' => $num,
+            'dateInit' => $dateInit,
+            'dateEnd' => $dateEnd,
+            'totalCost' => $totalCost,
+            'supplierID' => $supplierID,
+            'costType' => $costType,
+            'status' => $status
+
+        ]);
+
+        //dd($request->all());
+
+
+        return redirect()->back()->with('success', 'Ordem de Compra Atualizada com Sucesso');
+    }
+
+    public function Details($id)
+    {
+        $data = po::Where('id', '=', $id)->First();
+        return View('POs/Details', compact('data'));
+    }
+
+
+    public function DeletePO($id)
+    {
+        $id = Po::Where('id', '=', $id)->Delete();
+        return redirect()->back()->with('success', 'Ordem de Compra Eliminada com Sucesso');
     }
 }

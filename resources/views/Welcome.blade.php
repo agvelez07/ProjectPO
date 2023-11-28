@@ -9,7 +9,7 @@
 
 <body class="font-sans antialiased">
     <div class="menu">
-        <a href="https://www.kyntech.pt" class="menu-logo">
+        <a href="https://www.kyndryl.com/pt/pt" class="menu-logo">
             <img src="\imgs\kyndryl-logo-min.svg" alt="Kyndryl" class="logo" />
         </a>
         <ul class= "authentication-buttons">
@@ -31,16 +31,18 @@
         <div class="options-container">
             <ul class="app-options-buttons">
                 <li>
-                    <a href="{{url('Suppliers')}}" class="app-option-button">
+
+                    <a href="{{url('POs')}}" class="app-option-button">
+                        Gerir Ordens de Compra
+                    </a>
+                    <a href="{{url('Suppliers')}}" class="app-option-button second-btn">
                         Gerir Fornecedores
                     </a>
                     <li>
-                    <a href="{{url('Users')}}" id="second-btn" class="app-option-button">
+                    <a href="{{url('Users')}}"class="app-option-button second-btn">
                         Gerir Utilizadores
                     </a>
-                    <a href="" id="second-btn" class="app-option-button">
-                        Adicionar PO
-                    </a>
+    
                 </li>
             </ul>
         </div>

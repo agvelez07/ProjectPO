@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\POController;
+
 
 Route::get('/', function(){
     return view('Welcome');
@@ -33,6 +35,20 @@ Route::get('Suppliers/Edit/{ID}', [SupplierController::class,'Edit']);
 Route::post('Update-Supplier', [SupplierController::class,'updateSupplier']);
 
 Route::get('Delete/{ID}', [SupplierController::class,'deleteSupplier']);
+
+//Ordem de Compra-------------------------------------------------------------------
+
+Route::get('POs', [POController::class,'Index']);
+
+Route::get('POs/Create', [POController::class,'Create']);
+Route::post('Save-PO', [POController::class,'savePO']);
+
+Route::get('POs/Edit/{id}', [POController::class,'Edit']);
+Route::post('Update-PO', [POController::class,'updatePO']);
+
+Route::get('Delete/{id}', [POController::class,'deletePO']);
+
+Route::get('POs/Details/{id}', [POController::class,'Details']);
 
 
 
