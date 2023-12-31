@@ -22,11 +22,6 @@
                     <div class="alert alert-danger" role="alert">
                         {{ Session::get('fail') }}
                     </div>
-                @elseif(Session::has('emailExists'))
-                    <div class="alert alert-danger" role="alert">
-                        {{ Session::get('emailExists') }}
-                    </div>
-                @endif
                 <form method="post" action="{{ url('Save-PO') }}">
                     @csrf
                     <div class="md-3">
@@ -51,14 +46,15 @@
                     </div>
                     <div class="md-3">
                         <label class="form-label">Data Final</label>
-                        <input type="date" class="form-control" name="dateEnd" value="2023-12-01" min="2023-12-01" value="{{ old('dateEnd') }}">
-                        @error('dateEnd') 
+                        <input type="date" class="form-control" name="dateEnd" value="2023-12-01" min="2023-12-01"
+                            value="{{ old('dateEnd') }}">
+                        @error('dateEnd')
                             <div class="alert alert-danger" role="alert">
                                 {{ $message }}
                             </div>
                         @enderror
                     </div>
-                    
+
                     <div class="md-3">
                         <label class="form-label">Custo Total</label>
                         <input type="text" class="form-control" name="totalCost" placeholder="000,00€"
@@ -69,13 +65,23 @@
                             </div>
                         @enderror
                     </div>
-                    <div class="md-3">
+                    <!--<div class="md-3">
                         <h3>Fornecedor</h3>
-                        <select name="supplierID"> 
+                        <select name="supplierID">
                             <option value="1">1 algo</option>
                             <option value="1">1 algo</option>
                             <option value="1">1 funciona</option>
                             <option value="1">1 algo</option>
+                        </select>
+                    </div>-->
+                    <div class="md-3">
+                        <select name="supplierID" required id="id">
+                            <option value="option_select" disabled selected>Fornecedor</option>
+                            @foreach ($suppliersData as $supplier)
+                                <option value="{{ $supplier->id }}" >
+                                    {{ $supplier->id }} | {{ $supplier->name }}
+                                </option>
+                            @endforeach
                         </select>
                     </div>
                     

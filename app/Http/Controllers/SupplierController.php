@@ -28,7 +28,7 @@ class SupplierController extends Controller
         // Validação
         $request->validate([
             'id' => 'unique:supplier,id',
-            'name' => 'required|min:6',
+            'name' => 'required|min:2',
         ]);
 
         // Valores do request passados para as respectivas variáveis

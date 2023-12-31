@@ -60,12 +60,13 @@
                         @enderror
                     </div>
                     <div class="md-3">
-                        <h3>Fornecedor</h3>
-                        <select name="supplierID">
-                            <option value="1" @if($data->supplierID == 0) selected @endif>Roberto</option>
-                            <option value="1" @if($data->supplierID == 0) selected @endif>Zé</option>
-                            <option value="1" @if($data->supplierID == 0) selected @endif>Emidio</option>
-                            <option value="1" @if($data->supplierID == 0) selected @endif>Hugo</option>
+                        <select name="supplierID" required id="id">
+                            <option value="option_select" disabled selected>Fornecedor</option>
+                            @foreach ($suppliersData as $supplier)
+                                <option value="{{ $supplier->id }}" >
+                                    {{ $supplier->id }} | {{ $supplier->name }}
+                                </option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="md-3">

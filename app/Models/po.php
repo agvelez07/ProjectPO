@@ -18,8 +18,8 @@ class po extends Model
      */
     protected $fillable = [
         'num',
-        'dateInit'.
-        'dateEnd'.
+        'dateInit',
+        'dateEnd',
      	'totalCost',
      	'supplierID', 
         'costType',

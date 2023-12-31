@@ -1,10 +1,30 @@
-body {
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
     overflow-x: hidden;
     font-family: Sans-Serif;
     margin: 0;
     overflow-y: hidden;
 }
-
+main{
+    height: 100%;
+}
+.sideContainer{
+    display: table;
+    height: 100%;
+    width: 100%;
+}
+.leftSide {
+    display: table-cell;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    width: 20%;
+    height: 100%;
+    background-color: #232323;
+    padding: 1rem;
+  }
 .menu {
     background-color: rgb(255, 255, 255);
 	box-shadow: #000000ba 1px 4px 23px 7px;
@@ -30,11 +50,22 @@ body {
     margin: 11px 0 0 20px;
 }
 
+.dropdown{
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    border: #000000ba solid 100;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    border: var(--bs-border-width) solid var(--bs-border-color);
+    border-radius: var(--bs-border-radius);
+}
 a {
     text-decoration: none;
 }
 a::after {
-    content: '';
     position: absolute;
     bottom: 0;
     left: 0;
@@ -45,25 +76,26 @@ a::after {
     transition: opacity 300ms, transform 300ms;
 }
 
-#login-button,
-#register-button {
+.login-button,
+.register-button {
+    text-decoration: none;
     color: rgb(90, 90, 90);
     overflow: hidden;
 }
 
-#login-button::after,
-#register-button::after {
+.login-button::after,
+.register-button::after {
     opacity: 1;
     transform: translate3d(-100%, 0, 0);
 }
 
-#login-button:hover::after,
-#register-button:hover::after {
+.login-button:hover::after,
+.register-button:hover::after {
     opacity: 1;
     transform: translate3d(0, 0, 0);
 }
-#login-button:hover,
-#register-button:hover {
+.login-button:hover,
+.register-button:hover {
     color: #f04b36;
 }
 
@@ -82,6 +114,7 @@ a::after {
 
 .authentication-buttons {
     list-style: none;
+    margin-top: 14px;
     margin-left: 120px;
 }
 
@@ -146,29 +179,31 @@ a::after {
     margin: 2em 0 0 0.3em;
 }
 
-.studentButtons {
+.addButtons {
     width: auto;
-    height: 33px;
-    max-width: 1em; 
+    height: 38px;
+    max-width: 1.4em; 
     transition: max-width 0.5s;
     background: #fff;
-    border: 2.4px solid #f04b36;
     color: black;
     text-decoration: none;
     font-size: 1.8em !important;
     margin-left: 0.6em !important;
-    margin-top: 9px;
+    margin-top: 9.3px;
     text-decoration: none;
     border-radius: 5px;
+    border-width: 2px;
     display: inline-flex;
     align-items: center;
     overflow: hidden;
 }
 
-    .studentButtons:hover {
+    .addButtons:hover {
         max-width: 3000px; 
         cursor: pointer;
         color: #f04b36;
+        border: 2.4px solid #f04b36;
+
     }
 
 .text {
@@ -180,16 +215,126 @@ a::after {
 }
 
 .plus {
+    width: 48px;
     font-family: 'Sans Serif Collection';
     font-weight: 500;
     font-size: xx-large;
     margin-left: -6px;
-    margin-top: -3px;
+    margin-top: 0px;
     color: #f04b36;
     padding: 0px 8px;
     display: flex;
     align-items: center;
 }
+
+.save {
+    width: 52px;
+    font-family: 'Sans Serif Collection';
+    font-weight: 500;
+    font-size: large;
+    margin-left: 0px;
+    margin-top: 0px;
+    padding: 0px 8px;
+    display: flex;
+    align-items: center;
+}
+.delete {
+    width: 52px;
+    font-family: 'Sans Serif Collection';
+    font-weight: 500;
+    font-size: large;
+    margin-left: 0px;
+    margin-top: 0px;
+    padding: 0px 8px;
+    display: flex;
+    align-items: center;
+}
+
+.btn-delete{
+    padding: 2px !important;
+    border-color: #32993200 !important; 
+    border-width: 2px !important;
+
+
+}
+.btn-delete:hover{
+    border-width: 2px !important;
+    border: solid !important;
+    border-radius: 8px !important;
+    border-color: #9f0b0b !important;
+    border-width: 2px !important;
+}
+.btn-save{
+    margin-right: -30px !important;
+    margin-top: 2px !important;
+    background-color: #ffffff00 !important;
+    border-color: #32993200 !important; 
+    border-width: 1.7px !important;
+    padding: 0px !important;
+
+}
+.btn-save:hover{
+     background-color: #2e9140 !important; 
+    border: solid !important;
+    border-radius: 8px !important;
+    border-color: #2e9140 !important;
+    border-width: 2px !important;
+}
+
+#search_container {
+    width: 100%;
+    margin-left: 0em;
+    margin-top: 4vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2em;
+}
+
+input {
+    padding-left: 35px; 
+}
+
+
+
+.search_input {
+    flex: 1;
+    width: 40em;
+    height: 48px;
+    margin-right: 0.5em;
+    border-radius: 5px;
+    color: black;
+    font-size: large;
+    border-color: #c2c2c2;
+    box-shadow: none;
+    border-style: solid;
+    background-image: url("../imgs/search.svg");
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: 2em 1.4em;
+}
+
+
+#search_button {
+    width: 4.4em;
+    height: 48px;
+    background: #fff;
+    border-radius: 5px;
+    border-color: #f04b36;
+    color: #f04b36;
+    font-size: medium;
+    text-align: center;
+    margin-right: 0.5em;
+    padding: 5px 5px 5px 5px;
+}
+
+    #search_button:hover {
+        background: #f04b36;
+        border-color: #fff;
+        color: #fff;
+    }
+
+
 
 @media only screen and (max-width: 767px) {
     .menu-container {
