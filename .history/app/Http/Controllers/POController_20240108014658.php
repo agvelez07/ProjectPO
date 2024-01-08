@@ -100,7 +100,8 @@ class POController extends Controller
     {
          //dd($request->all());
         $request->validate([
-            'num' => 'required|unique:po,num,' . $request->id,
+            'num' => 'required|unique:po,num,''num' => 'required|unique:po,num,' . $request->id,
+            ,
             'dateInit' => 'required',
             'dateEnd' => 'required|date|after_or_equal:dateEnd',
             'totalCost' => 'required',
@@ -118,7 +119,7 @@ class POController extends Controller
             'status' => 'Estado de Compra Invalido!' ,
         ]);
 
-        // dd($request->all());
+        dd($request->all());
 
         $id = $request->id;
         $num = $request->num;

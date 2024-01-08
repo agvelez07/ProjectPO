@@ -118,7 +118,7 @@ class POController extends Controller
             'status' => 'Estado de Compra Invalido!' ,
         ]);
 
-        // dd($request->all());
+        dd($request->all());
 
         $id = $request->id;
         $num = $request->num;

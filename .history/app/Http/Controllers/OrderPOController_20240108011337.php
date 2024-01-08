@@ -62,7 +62,9 @@ class OrderPOController extends Controller
             $invoice_path = $request->file('invoice_path');
             $filename = 'PO_'.$po_id.'-'.time().'.'.$invoice_path->extension();
             $path = $invoice_path->storeAs('uploads/category', $filename);
-                
+        
+            dd("Boklas");
+        
             $order->invoice_path = $path;
         }
         

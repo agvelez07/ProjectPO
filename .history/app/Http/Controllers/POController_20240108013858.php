@@ -98,9 +98,9 @@ class POController extends Controller
 
     public function updatePO(Request $request)
     {
-         //dd($request->all());
+        dd($request->all());
         $request->validate([
-            'num' => 'required|unique:po,num,' . $request->id,
+            'num' => 'required|unique:po,num,',
             'dateInit' => 'required',
             'dateEnd' => 'required|date|after_or_equal:dateEnd',
             'totalCost' => 'required',
@@ -118,16 +118,16 @@ class POController extends Controller
             'status' => 'Estado de Compra Invalido!' ,
         ]);
 
-        // dd($request->all());
+        //dd($data);
 
-        $id = $request->id;
-        $num = $request->num;
-        $dateInit = $request->dateInit;
-        $dateEnd = $request->dateEnd;
-        $costType = $request->costType;
-        $supplierID = $request->supplierID;
-        $totalCost = $request->totalCost;
-        $status = $request->status;
+        $id = $request['id'];
+        $num = $request['num'];
+        $dateInit = $request['dateInit'];
+        $dateEnd = $request['dateEnd'];
+        $costType = $request['costType'];
+        $supplierID = $request['supplierID'];
+        $totalCost = $request['totalCost'];
+        $status = $request['status'];
 
 
 
@@ -140,9 +140,9 @@ class POController extends Controller
             'costType' => $costType,
             'supplierID' => $supplierID,
             'totalCost' => $totalCost,
-            'status' => $status,
+            'status' => $totalCost,
         ]);
-        return redirect('POs/Delete/{id}')->with('success', 'Ordem de Compra Guardada com Sucesso!');
+        POs/Delete/{id}
         // return redirect()->back()->with('success', 'Ordem de Compra Guardada com Sucesso!');
     }
 

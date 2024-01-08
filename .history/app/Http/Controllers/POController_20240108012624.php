@@ -98,9 +98,9 @@ class POController extends Controller
 
     public function updatePO(Request $request)
     {
-         //dd($request->all());
+        
         $request->validate([
-            'num' => 'required|unique:po,num,' . $request->id,
+            'num' => 'required|unique:po,num,',
             'dateInit' => 'required',
             'dateEnd' => 'required|date|after_or_equal:dateEnd',
             'totalCost' => 'required',
@@ -111,39 +111,38 @@ class POController extends Controller
             'num' => 'Número de Ordem Indisponível!',
             'dateInit' => 'Data Inicial Invalida!' ,
             'dateEnd' => 'Data Final Invalida!',
-            'dateEnd.after_or_equal:dateEnd' => 'Data Final não pode ser inferior a Data Inicial!',
-            'totalCost' => 'Custo Total Invalido!' ,
-            'supplierID' => 'Fornecedor não disponivel!' ,
-            'costType' => 'Tipo de Custo Invalido!' ,
-            'status' => 'Estado de Compra Invalido!' ,
+            'dateEnd.after_or_equal:dateEnd' => 'Data Final não pode ser inferior a Data Inicial!' . $num,
+            'totalCost' => 'Custo Total Invalido! ,
+            'supplierID' => 'Fornecedor não disponivel! ,
+            'costType' => 'Tipo de Custo Invalido! ,
+            'status' => 'Estado de Compra Invalido! ,
         ]);
 
-        // dd($request->all());
-
-        $id = $request->id;
-        $num = $request->num;
-        $dateInit = $request->dateInit;
-        $dateEnd = $request->dateEnd;
-        $costType = $request->costType;
-        $supplierID = $request->supplierID;
-        $totalCost = $request->totalCost;
-        $status = $request->status;
+        //dd($data);
 
 
+        $num = $request['num'];
+        $dateInit = $request['dateInit'];
+        $dateEnd = $request['dateEnd'];
+        $costType = $request['costType'];
+        $supplierID = $request['supplierID'];
+        $totalCost = $request['totalCost'];
+        $status = $request['status'];
 
 
-        PO::Where('id', '=', $id)->update([
 
+
+        $data->update([
             'num' => $num,
             'dateInit' => $dateInit,
             'dateEnd' => $dateEnd,
-            'costType' => $costType,
-            'supplierID' => $supplierID,
             'totalCost' => $totalCost,
-            'status' => $status,
+            'supplierID' => $supplierID,
+            'costType' => $costType,
+            'status' => $status
         ]);
-        return redirect('POs/Delete/{id}')->with('success', 'Ordem de Compra Guardada com Sucesso!');
-        // return redirect()->back()->with('success', 'Ordem de Compra Guardada com Sucesso!');
+
+        return redirect()->back()->with('success', 'Ordem de Compra Guardada com Sucesso!');
     }
 
 

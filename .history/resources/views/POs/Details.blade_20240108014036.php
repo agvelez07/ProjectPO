@@ -31,7 +31,7 @@
                     </div>
                 @endif
                 <tr>
-                    <form method="post" action="{{ url('Update-PO')}}" class="POForm">
+                    <form method="post" action="{{ url('Update-PO/0')}}" class="POForm">
                         @csrf
                         <input type="hidden" name="id" value="{{ old('id', $data->id) }}">
                         <input type="hidden" name="totalCost" value="{{ old('id', $data->totalCost) }}">

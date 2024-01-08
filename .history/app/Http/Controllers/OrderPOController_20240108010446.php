@@ -60,12 +60,12 @@ class OrderPOController extends Controller
 
         if ($request->hasFile('invoice_path')) {
             $invoice_path = $request->file('invoice_path');
-            $filename = 'PO_'.$po_id.'-'.time().'.'.$invoice_path->extension();
+            $filename = 'PO_'.$po_id.'-'.time().'.'.$request->image->extension();
             $path = $invoice_path->storeAs('uploads/category', $filename);
-                
+
+        
             $order->invoice_path = $path;
         }
-        
         
 
 

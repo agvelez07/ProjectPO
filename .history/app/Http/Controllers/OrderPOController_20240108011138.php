@@ -59,13 +59,18 @@ class OrderPOController extends Controller
         ]);
 
         if ($request->hasFile('invoice_path')) {
+            // $invoice_path = $request->file('invoice_path');
+            // $filename = 'PO_'.$po_id.'-'.time().'.'.$request->image->extension();
+            // $path = $invoice_path->storeAs('uploads/category', $filename);
+            
             $invoice_path = $request->file('invoice_path');
-            $filename = 'PO_'.$po_id.'-'.time().'.'.$invoice_path->extension();
+            $filename = 'PO_'.$po_id.'-'.time().'.'.$request->invoice_path->extension();
             $path = $invoice_path->storeAs('uploads/category', $filename);
-                
+
+            dd("Boklas");
+        
             $order->invoice_path = $path;
         }
-        
         
 
 
