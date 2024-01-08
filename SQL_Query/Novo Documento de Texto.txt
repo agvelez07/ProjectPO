@@ -1,0 +1,9 @@
+CREATE TABLE order_po (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    po_id INT NOT NULL,
+    FOREIGN KEY (po_id) REFERENCES po(id) ON DELETE CASCADE,
+    date DATE NOT NULL,
+    invoice_path VARCHAR(255),
+    price DECIMAL(10,3) NOT NULL,
+    units INT NOT NULL
+);
